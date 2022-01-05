@@ -9,20 +9,15 @@ export default class Timer extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.isStart) {
-            this.timerFunction();
-        }
+        this.timerFunction();
     }
 
     timerFunction() {
-        if (this.props.isFinish) {
-        } else {
-            startTime = new Date()
-            setInterval(() => {
-                this.setState({ time: this.getTimerTime() })
-                this.props.time(this.state.time)
-            }, 1000)
-        }
+        startTime = new Date()
+        setInterval(() => {
+            this.setState({ time: this.getTimerTime() })
+            this.props.time(this.state.time)
+        }, 1000)
     }
 
     getTimerTime() {
