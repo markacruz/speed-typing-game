@@ -79,7 +79,7 @@ export default class Type extends React.Component {
                 {this.state.isFinish ? <Modal time={this.props.time} 
                 characters={this.state.characters} 
                 words={this.state.words} 
-                wpm={Math.floor(this.state.characters.length / 5) / (this.props.time / 60)}/> : null}
+                wpm={Math.floor((this.state.characters.length / 5) / (this.props.time / 60))}/> : null}
 
                 <div className='w-[480px] h-[300px] shadow-2xl'>
                     <div className='bg-[#2C2F33] rounded-md px-6 py-4'>
