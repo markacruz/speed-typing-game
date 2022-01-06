@@ -20,14 +20,8 @@ const OVERLAY_STYLE = {
 
 export default class Modal extends React.Component {   
 
-    state = {
-        isPlayAgain: false
-    }
-
     handlePlayAgain = () => {
-        this.setState({
-            isPlayAgain: true
-        })
+        window.location.reload();
     }
 
     render() {

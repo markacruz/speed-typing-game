@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Modal from './Modal'
+import Modal from './Modal';
 
 export default class Type extends React.Component {
     
