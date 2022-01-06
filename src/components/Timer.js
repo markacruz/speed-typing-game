@@ -7,18 +7,18 @@ export default class Timer extends React.Component {
     state = {
         time: 0
     }
-
+    
     componentDidMount() {
-        this.timerFunction();
+        this.timer();
     }
 
-    timerFunction() {
+    timer = () => {
         startTime = new Date()
         setInterval(() => {
             this.setState({ time: this.getTimerTime() })
             this.props.time(this.state.time)
         }, 1000)
-    }
+    };
 
     getTimerTime() {
         return Math.floor((new Date() - startTime) / 1000)
@@ -33,4 +33,6 @@ export default class Timer extends React.Component {
             </div>
         )
     }
+    
 }
+

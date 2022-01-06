@@ -9,15 +9,18 @@ export default class Type extends React.Component {
         characters: [],
         words: [],
         isFinish: false,
-        isStart: false
+        isStart: false,
     }
 
     handleChange = (event) => {
+    
         let quoteDisplayElement = document.getElementById('quote');
-        let quoteInputElement = document.getElementById('input')
+        let quoteInputElement = document.getElementById('input');
 
         const arrayQuote = quoteDisplayElement.querySelectorAll('span')
         const arrayValue = quoteInputElement.value.split("")
+
+        if (arrayValue.length === 1) this.props.hasStartedTyping(true);
 
         arrayQuote.forEach((characterSpan, index) => {
             const character = arrayValue[index]
@@ -34,7 +37,7 @@ export default class Type extends React.Component {
             }
         })
 
-        if (arrayQuote.length === arrayValue.length) {
+        if (arrayQuote.length === arrayValue.length && arrayQuote[arrayQuote.length-1].innerText === arrayValue[arrayValue.length-1]) {
             this.props.isFinish(true)
             this.setState({ isFinish: true  })
         }
@@ -65,9 +68,7 @@ export default class Type extends React.Component {
                 quoteDisplayElement.appendChild(characterSpan)
             })
             quoteInputElement.value = null
-
             this.props.isStart(true);
-            
         }).catch (err => console.log(err))
     }
     
@@ -78,7 +79,7 @@ export default class Type extends React.Component {
                 {this.state.isFinish ? <Modal time={this.props.time} 
                 characters={this.state.characters} 
                 words={this.state.words} 
-                wpm={Math.round(this.state.characters.length / 5) / (this.props.time / 60)}/> : null}
+                wpm={Math.floor(this.state.characters.length / 5) / (this.props.time / 60)}/> : null}
 
                 <div className='w-[480px] h-[300px] shadow-2xl'>
                     <div className='bg-[#2C2F33] rounded-md px-6 py-4'>
