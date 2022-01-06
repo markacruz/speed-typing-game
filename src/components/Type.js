@@ -37,7 +37,7 @@ export default class Type extends React.Component {
             }
         })
 
-        if (arrayQuote.length === arrayValue.length && arrayQuote[arrayQuote.length-1].innerText === arrayValue[arrayValue.length-1]) {
+        if (arrayQuote.length === arrayValue.length && (arrayQuote[arrayQuote.length-1].innerText === arrayValue[arrayValue.length-1] || arrayValue[arrayValue.length-1] === '\n')) {
             this.props.isFinish(true)
             this.setState({ isFinish: true  })
         }
